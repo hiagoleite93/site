@@ -1,0 +1,51 @@
+{% extends 'static/base.html' %}
+{% load humanize %}
+{% load hiagols_filter %}
+
+
+{% include 'parciais/_courosel.html' %}
+
+{%block conteudo%}
+
+
+<!-- CONTENT -->
+<div class="card-columns mt-4">
+
+    {% for post in posts %}
+    <div class="card">
+
+        {% if post.imagem_post %}
+        <a href="{% url 'post_detalhes' post.id %}">
+            <img class="card-img-top"
+                 src="{{ post.imagem_post.url }}"
+                 alt="{{ post.titulo_post }}">
+        </a>
+        {% endif %}
+
+        <div class="card-body">
+            <h5 class="card-title">
+                <a href="{% url 'post_detalhes' post.id %}" style="color:#141414">
+                    {{ post.titulo_post }}
+                </a>
+            </h5>
+            <p class="card-text"> {{ post.excerto_post|safe }} </p>
+            <p class="card-text">
+                <small class="text-muted">
+                    {{ post.data_post|naturalday|title }}
+                    |
+                    {{ post.numero_comentarios|plural_comentarios }}
+                    |
+                    {{ post.categoria_post }}</small>
+            </p>
+
+            <div class="text-right">
+                <a href="{% url 'post_detalhes' post.id %}" class="btn btn-outline"
+                   style="background-color:#eec643ff">Ler mais...</a>
+            </div>
+        </div>
+    </div>
+    {%endfor%}
+</div>
+<!--/CONTENT-->
+{% include 'parciais/_pagination.html' %}
+{%endblock%}

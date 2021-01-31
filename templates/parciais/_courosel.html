@@ -1,0 +1,29 @@
+{% load static %}
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img class="first-slide" src="{{ posts.imagem_post.url}}" alt="{{ posts.titulo_post }}"
+                 style="opacity: 60%;">
+            <div class="container">
+                <div class="carousel-caption text-left">
+                    <h1>{{ posts.title_post }}</h1>
+                    <p>{{ posts.excerto_post }}</p>
+                    <p><a class="btn btn-lg btn-outline-light href=" #" role="button" >Sign up today</a></p>
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Voltar</span>
+        </a>
+        <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Avançar</span>
+        </a>
+    </div>
